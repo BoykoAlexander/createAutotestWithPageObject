@@ -1,15 +1,15 @@
-package yandex.boyko.test;
+package yandex.boyko.tests;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
-import yandex.boyko.pages.components.TasteBase;
+import yandex.boyko.page.RegistrationPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class StudentRegistrationFormWithJavaFaker extends TasteBase {
 
 
-  RegistrationPages registrationPages = new RegistrationPages();
+  yandex.boyko.page.RegistrationPage RegistrationPage = new RegistrationPage();
   Faker faker = new Faker();
 
   String firstName = faker.name().firstName();
@@ -21,15 +21,15 @@ public class StudentRegistrationFormWithJavaFaker extends TasteBase {
   @Test
   void fillFormTest() {
     //filling out the form
-    registrationPages.openPage()
+    RegistrationPage.openPage()
             .inputFirstName(firstName)
             .inputLastName(lastName)
             .inputEmeil(email)
-            .putGenderFemale()
+            .putGender("Male") //Female | Male | Other
             .inputPhoneNumber("9999999999");
-    registrationPages.CalendarComponent.SetDate();
-    registrationPages.inputSubjects("English")
-            .putHobbiesMusic()
+    RegistrationPage.calendarComponent.setDate();
+    RegistrationPage.inputSubjects("English")
+            .selectHobbies("Music")
             .uploadFileFromForm("driver.jpg")
             .inputCurrentAdress(currentAddress)
             .selectStateInCheckbox("Uttar Pradesh")
@@ -38,7 +38,7 @@ public class StudentRegistrationFormWithJavaFaker extends TasteBase {
     $("#submit").click();
 
     //Check assertion
-    registrationPages.checkResultTable("Student Name", firstName + " " + lastName)
+    RegistrationPage.checkResultTable("Student Name", firstName + " " + lastName)
             .checkResultTable("Student Email", email)
             .checkResultTable("Gender", "Male")
             .checkResultTable("Mobile", "9999999999")

@@ -1,4 +1,4 @@
-package yandex.boyko.test;
+package yandex.boyko.tests;
 
 import org.junit.jupiter.api.Test;
 

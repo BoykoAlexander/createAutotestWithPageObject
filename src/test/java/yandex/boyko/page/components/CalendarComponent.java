@@ -1,10 +1,10 @@
-package yandex.boyko.pages.components;
+package yandex.boyko.page.components;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
 
-  public void SetDate() {
+  public void setDate() {
     $("#submit").scrollTo();
     $("#dateOfBirthInput").click();
     $(".react-datepicker__month-select").selectOptionByValue("4");

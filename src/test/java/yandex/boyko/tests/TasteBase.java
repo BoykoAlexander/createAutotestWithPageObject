@@ -1,4 +1,4 @@
-package yandex.boyko.pages.components;
+package yandex.boyko.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
